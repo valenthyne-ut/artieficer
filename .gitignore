@@ -1,0 +1,7 @@
+### Files
+.cfg.json
+
+### Folders
+node_modules
+src/clients
+dist
