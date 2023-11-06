@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { existsSync, readFileSync } from "fs";
-import { dirname, join } from "path";
+import { basename, join } from "path";
 
 export type ClientCandidateConfig = {
 	name: string | null;
@@ -32,7 +32,7 @@ export class ClientCandidate {
 		const candidateConfig = JSON.parse(candidateConfigRaw) as ClientCandidateConfig;
 
 		if(!("token" in candidateConfig)) { throw new Error("Candidate has invalid configuration. No token found."); }
-		if(!("name" in candidateConfig)) { (candidateConfig as ClientCandidateConfig).name == dirname(pathToCandidate); }
+		if(!("name" in candidateConfig)) { (candidateConfig as ClientCandidateConfig).name = basename(pathToCandidate); }
 
 		this.config = candidateConfig;
 
