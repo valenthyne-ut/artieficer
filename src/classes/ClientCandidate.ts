@@ -8,7 +8,7 @@ export type ClientCandidateConfig = {
 };
 
 export type ClientCandidateBootstrapper = {
-	init: ((config: ClientCandidateConfig) => boolean);
+	init: ((config: ClientCandidateConfig) => unknown);
 }
 
 export class ClientCandidate {

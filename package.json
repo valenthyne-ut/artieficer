@@ -1,6 +1,6 @@
 {
   "name": "artieficer",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A platform written in Typescript to manage and/or run multiple Discord bots at once.",
   "main": "index.js",
   "scripts": {
