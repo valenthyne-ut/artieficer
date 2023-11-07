@@ -1,6 +1,6 @@
 import { readdirSync, writeFileSync } from "fs";
 import { join } from "path";
-import { ClientCandidate } from "./classes/ClientCandidate";
+import { ClientInstance } from "./classes/ClientInstance";
 import { Logger } from "./classes/Logger";
 
 export const logger = new Logger();
@@ -13,12 +13,14 @@ export const logger = new Logger();
 	const clisDirPath = join(__dirname, "clients");
 	const clisDirContents = readdirSync(clisDirPath);
 
-	const clients: Array<ClientCandidate> = [];
+	const clients: Array<ClientInstance> = [];
 
-	clisDirContents.forEach(cliCandidate => {
-		const cliCandidatePath = join(clisDirPath, cliCandidate);
+	clisDirContents.forEach(instanceDirName => {
+
+		const instancePath = join(clisDirPath, instanceDirName);
+
 		try {
-			clients.push(new ClientCandidate(cliCandidatePath));
+			clients.push(new ClientInstance(instancePath));
 		} catch(error) {
 			let errorMessage = "";
 			let trace = undefined;
@@ -30,8 +32,9 @@ export const logger = new Logger();
 				trace = error.stack;
 			}
 
-			logger.error(`An error occurred while reading client candidate from ${cliCandidatePath}\n${errorMessage}\n\n${trace}` );
+			logger.error(`An error occurred while reading client instance from ${instancePath}\n${errorMessage}\n\n${trace}` );
 		}
+
 	});
 
 	if(clients.length > 0) {
@@ -40,8 +43,14 @@ export const logger = new Logger();
 
 		clients.forEach(client => {
 			try {
-				logger.info(`Running "${client.config.name}";`);
-				client.bootstrapper.init(client.config);
+				if(client.config.enabled) {
+					logger.success(`Running client "${client.config.name}"..`);
+					client.bootstrapper(client.config);
+				} else {
+					logger.error(`Client "${client.config.name}" is disabled.`);
+				}
+				// logger.info(`Running "${client.config.name}";`);
+				// client.bootstrapper(client.config);
 			} catch(error) {
 				
 				let errorMessage = "";
@@ -62,7 +71,7 @@ export const logger = new Logger();
 						.replace(/:/g, "-")
 						.replace(/\..+/, "");
 				
-				const errFilePath = join(client.pathTo, errFilename);
+				const errFilePath = join(client.path, errFilename);
 
 				writeFileSync(errFilePath, `${errorMessage}\n${trace}`, { encoding: "utf-8" });
 
