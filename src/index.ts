@@ -1,4 +1,4 @@
-import { readdirSync, writeFileSync } from "fs";
+import { readdirSync, statSync, writeFileSync } from "fs";
 import { join } from "path";
 import { ClientInstance } from "./classes/ClientInstance";
 import { Logger } from "./classes/Logger";
@@ -18,6 +18,7 @@ export const logger = new Logger();
 	clisDirContents.forEach(instanceDirName => {
 
 		const instancePath = join(clisDirPath, instanceDirName);
+		if(!statSync(instancePath).isDirectory()) { return; }
 
 		try {
 			clients.push(new ClientInstance(instancePath));
