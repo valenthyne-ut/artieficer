@@ -19,4 +19,4 @@ The *name* property is optional. If it's not defined in the configuration, Artie
 
 ---
 
-As mentioned above, Artificer passes the configuration as an argument to the init function. This includes any other property defined in the configuration file. If your client uses any custom defined properties, I recommend you extend the base `ClientInstanceConfig` class found in `/classes/ClientInstance.ts` and add your custom properties to the extended class.
+As mentioned above, Artieficer passes the configuration as an argument to the init function. This includes any other property defined in the configuration file. If your client uses any custom defined properties, I recommend you extend the base `ClientInstanceConfig` class found in `/classes/ClientInstance.ts` and add your custom properties to the extended class.
