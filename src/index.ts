@@ -49,8 +49,6 @@ export const logger = new Logger();
 				} else {
 					logger.error(`Client "${client.config.name}" is disabled.`);
 				}
-				// logger.info(`Running "${client.config.name}";`);
-				// client.bootstrapper(client.config);
 			} catch(error) {
 				
 				let errorMessage = "";

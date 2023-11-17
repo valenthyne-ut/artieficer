@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/valenthyne-ut/Artieficer#readme",
   "dependencies": {
-    "@types/node": "^20.8.10",
+    "@types/node": "^20.9.1",
     "chalk": "^4.1.2",
-    "discord.js": "^14.13.0",
+    "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "typescript": "^5.2.2"
   },
