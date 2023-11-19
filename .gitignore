@@ -3,6 +3,6 @@
 
 ### Folders
 node_modules
-src/clients/**
-!src/clients/README.md
+src/clients/root/**
+!src/clients/root/README.md
 dist
