@@ -1,9 +1,7 @@
 import { readdirSync, statSync, writeFileSync } from "fs";
 import { join } from "path";
 import { ClientInstance } from "artieficer-lib/ClientInstance";
-import { Logger } from "shared-lib/classes/Logger";
-
-export const logger = new Logger();
+import { logger } from "shared-lib/classes/Logger";
 
 (() => {
 
