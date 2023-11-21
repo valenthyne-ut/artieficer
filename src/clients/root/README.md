@@ -8,7 +8,7 @@ This directory is where Artieficer looks for clients. The basic file structure o
 
 The `bootstrap.ts` file must contain an exported function named *init*, which is responsible for executing the client. Artieficer passes the client configuration (`.cfg.json`) as an argument to the *init* function.
 
-The `.cfg.json` file contains the client's configuration. There currently three defined properties:
+The `.cfg.json` file contains the client's configuration. There are currently three defined properties:
 - enabled (**boolean** type)
 - token (**string** type)
 - name (**string** type)
@@ -19,4 +19,4 @@ The *name* property is optional. If it's not defined in the configuration, Artie
 
 ---
 
-As mentioned above, Artieficer passes the configuration as an argument to the init function. This includes any other property defined in the configuration file. If your client uses any custom defined properties, I recommend you extend the base `ClientInstanceConfig` class found in `/classes/ClientInstance.ts` and add your custom properties to the extended class.
+As mentioned above, Artieficer passes the configuration as an argument to the init function. This includes any other property defined in the configuration file. If your client uses any custom defined properties, I recommend you extend the base `ClientInstanceConfig` class found in `shared/types/ClientInstance.d.ts` and add your custom properties to the extended class.
