@@ -15,7 +15,6 @@ export class ClientInstance {
 		// validate path
 
 		if(!existsSync(pathToInstance)) { throw new Error("Instance's path is invalid."); }
-		
 		this.path = pathToInstance;
 
 		// validate config file
@@ -29,6 +28,7 @@ export class ClientInstance {
 
 		if(!("enabled" in instanceConfig)) { throw new Error("Instance configuration has no \"enabled\" boolean property."); }
 		if(!("token" in instanceConfig)) { throw new Error("Instance configuration has no \"token\" string property."); }
+		if(!("deployCommands" in instanceConfig)) { throw new Error("Instance configuration has no \"deployCommands\" boolean property."); }
 		if(!("name" in instanceConfig)) { (instanceConfig as ClientInstanceConfig).name = basename(this.path); }
 
 		this.config = instanceConfig;

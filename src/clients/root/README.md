@@ -12,8 +12,9 @@ The `.cfg.json` file contains the client's configuration. There are currently th
 - enabled (**boolean** type)
 - token (**string** type)
 - name (**string** type)
+- deployCommands (**boolean** type)
 
-The *enabled* and *token* properties are required, and Artieficer will throw an error while reading a client configuration without them.
+The *enabled*, *token* and *deployCommands* properties are required, and Artieficer will throw an error while reading a client configuration without them.
 
 The *name* property is optional. If it's not defined in the configuration, Artieficer will use the client's root directory name as a substitute.
 

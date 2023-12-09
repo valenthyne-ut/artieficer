@@ -58,7 +58,7 @@ import { logger } from "shared-lib/classes/Logger";
 					logger.success(`Running client "${client.config.name}"...`);
 					client.bootstrapper(client.config);
 				} else {
-					logger.error(`Client "${client.config.name}" is disabled.`);
+					logger.warning(`Client "${client.config.name}" is disabled.`);
 				}
 			} catch(error) {
 

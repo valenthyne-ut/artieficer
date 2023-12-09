@@ -1,5 +1,6 @@
 export type ClientInstanceConfig = {
 	enabled: boolean;
-	name: string | null;
+	name: string;
 	token: string;
+	deployCommands: boolean;
 };
